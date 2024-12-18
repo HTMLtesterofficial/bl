@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Page</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            animation: backgroundFade 2s forwards;
+            text-align: center;
+        }
+
+        @keyframes backgroundFade {
+            from {
+                background: black;
+            }
+            to {
+                background: white;
+            }
+        }
+
+        .main-text, .sub-text {
+            font-size: 2em;
+            color: black;
+            opacity: 0;
+        }
+
+        .main-text {
+            animation: textAppear 2s forwards 2s;
+        }
+
+        .sub-text {
+            animation: subTextAppear 2s forwards 3s;
+        }
+
+        @keyframes textAppear {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes subTextAppear {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .footer-text {
+            position: absolute;
+            bottom: 10px;
+            font-size: 0.8em;
+            opacity: 0;
+            animation: footerFadeIn 3s forwards 3s;
+            color: black;
+        }
+
+        @keyframes footerFadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio id="startup-sound" src="startup.mp3" preload="auto"></audio>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('startup-sound');
+            setTimeout(function() {
+                var playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(function() {
+                        console.log("Audio played successfully.");
+                    }).catch(function(error) {
+                        console.log("Autoplay was prevented:", error);
+                        document.body.addEventListener('click', function() {
+                            audio.play();
+                        }, {once: true});
+                    });
+                }
+            }, 10); // 10 milliseconds delay
+        });
+    </script>
+      <script>
+    function performRedirect() {
+      window.location.href = '../../webos-main/index.html';
+    }
+    setTimeout(performRedirect, 8000);
+
+function open() {
+  var newWindow = window.open("about:blank", "_blank");
+  newWindow.document.write('<iframe src="https://ntfy.sh/app" style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"></iframe>');
+}
+  </script>
+    <div>
+        <div class="main-text">Welcome to</div>
+        <div class="sub-text">the bypass launcher</div>
+    </div>
+    <div class="footer-text">©htmltesterofficial 2024, all rights reserved</div>
+</body>
+</html>
