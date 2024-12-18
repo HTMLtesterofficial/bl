@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Clear Local Storage</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+    <script type="text/javascript">
+        function clearLocalStorage() {
+            localStorage.removeItem("firstVisit");
+            alert("Local storage entry 'firstVisit' has been removed.");
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Manage Local Storage</h1>
+        <button onclick="clearLocalStorage()">Delete Local Storage Entry</button>
+    </div>
+</body>
+</html>
