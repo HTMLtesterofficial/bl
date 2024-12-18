@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The bypass launcher</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script> 
+    // Function to extract the random number from the URL
+    const getRandomNumberFromUrl = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('num');
+    };
+
+    // Function to display the random number on the page and log it to the console
+    const displayRandomNumber = () => {
+      const randomNumber = getRandomNumberFromUrl();
+
+      if (randomNumber !== null) {
+       // const displayElement = document.createElement('p');
+       // displayElement.textContent = `UID: ${randomNumber}`;
+       // document.body.appendChild(displayElement);
+
+        // Log the random number to the console
+        console.log('devtools_UID:', randomNumber);
+      } else {
+        //const errorMessage = document.createElement('p');
+       // errorMessage.textContent = 'No random number specified in the URL.';
+       //document.body.appendChild(errorMessage);
+        window.location.href = 'tosprotect.html';
+      }
+    };
+
+    // Call the displayRandomNumber function when the page loads
+    window.onload = displayRandomNumber;</script>
+</head>
+<body>
+    <div class="containertime">
+        <div class="header">
+            <div class="left">Bypass Launcher</div>
+            <div class="right" id="datetime"></div>
+        </div>
+			<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="index.html?num=1234">Home</a>
+  <a href="../source_code/ab.html?num=1234">About</a>
+  <a href="../source_code/TOS.html?num=1234">Terms of service</a>
+  <a href="../webos-main/index.html">Lock Session</a>
+</div>
+
+<div id="main">
+  <button class="openbtn" onclick="openNav()">&#9776; </button>
+</div>
+    </div>
+    <!-- Content of bypass Launcher -->
+    <h1 id="center">Welcome to the bypass Launcher</h1>
+    <p id="center">Select the app of your choice</p>
+    <script src="script.js"></script>
+
+    <!-- Wrapper div -->
+    <div class="wrapper">
+        <div class="container">
+            <img src="../source_code/minecraft.jpeg" alt="Minecraft" height="450">
+            <a href="../source_code/eaglercraft launcher/EaglercraftX_1.8_u45_Offline_Signed.html" target="_blank">
+                <button class="btn">Launch minecraft (eaglercraft)</button>
+            </a>
+        </div>
+        <div class="container">
+            <img src="../source_code/gams.jpg" alt="Games">
+                <button class="btn" onclick="opengams()">Singleplayer games list</button>
+        </div>
+        <div class="container">
+            <img src="../source_code/abe.jpg" alt="Embedder">
+            <a href="../source_code/aboutblankembedder-main/embedder.html" target="_blank">
+                <button class="btn">about:blank embedder (hides search history) (type url with https://)</button>
+            </a>
+        </div>
+		        <div class="container">
+            <img src="../source_code/chat.png" alt="chat">
+                <button class="btn" onclick="chat ()">Chat system for schools</button>
+			</div>
+    </div>
+</body>
+</html>
