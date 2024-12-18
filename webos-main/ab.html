@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <style>
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        h1 {
+            color: #000000;
+        }
+
+        p {
+            color: #000000;
+        }
+#white {
+    color: white;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.containertime {
+    height: 10%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(128, 128, 128);
+    padding: 5px 20px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.left {
+
+}
+
+.right {
+
+}
+
+.footer {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 30px 20px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    width: 70%;
+    border-radius: 10px;
+}
+
+.clock {
+    font-family: 'Roboto', sans-serif;
+    font-size: 4rem; 
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+}
+
+.date {
+    font-family: 'Roboto', sans-serif; 
+    font-size: 1.2rem;
+    text-align: center;
+    color: white;
+    margin-top: 10px;
+}
+
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.container img {
+    width: 100%;
+    height: auto;
+}
+
+.container .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.container .btn:hover {
+    background-color: black;
+}
+
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+}
+
+img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+#center {
+    text-align: center;
+}
+.sidebar {
+  height: 100%;
+  width: 0; 
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+    </style>
+	<script>
+function updateDateTime() {
+    const now = new Date();
+
+    // Update clock in the header
+    const hoursHeader = now.getHours() % 12 || 12; // Convert to 12-hour format
+    const minutesHeader = now.getMinutes();
+    const ampmHeader = now.getHours() >= 12 ? 'PM' : 'AM';
+    const timeStringHeader = `${hoursHeader}:${minutesHeader < 10 ? '0' : ''}${minutesHeader} ${ampmHeader}`;
+    document.getElementById('datetime').textContent = timeStringHeader;
+
+    // Update clock in the main area
+    const hoursMain = now.getHours() % 12 || 12; // Convert to 12-hour format
+    const minutesMain = now.getMinutes();
+    const ampmMain = now.getHours() >= 12 ? '' : '';
+    const timeStringMain = `${hoursMain}:${minutesMain < 10 ? '0' : ''}${minutesMain} ${ampmMain}`;
+    document.getElementById('clock').textContent = timeStringMain;
+
+    // Update date
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const dayOfWeek = daysOfWeek[now.getDay()];
+    const dayOfMonth = now.getDate();
+    const month = months[now.getMonth()];
+    const year = now.getFullYear();
+    const dateString = `${dayOfWeek}, ${dayOfMonth}${getDaySuffix(dayOfMonth)} ${month} ${year}`;
+    document.getElementById('date').textContent = dateString;
+}
+
+// Function to get the suffix for the day of the month (e.g., 1st, 2nd, 3rd, etc.)
+function getDaySuffix(day) {
+    if (day >= 11 && day <= 13) {
+        return 'th';
+    }
+    switch (day % 10) {
+        case 1: return 'st';
+        case 2: return 'nd';
+        case 3: return 'rd';
+        default: return 'th';
+    }
+}
+
+// Update date and time every second
+setInterval(updateDateTime, 1000);
+
+// Initial call to display date and time immediately
+updateDateTime();
+//navigation assistant javascript code
+function navassistance() {
+  var x = document.getElementById("myNavbar");
+  if (x.className === "navbar") {
+    x.className += " responsive";
+  } else {
+    x.className = "navbar";
+  }
+}
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}
+	</script>
+</head>
+<body>
+    <div class="containertime">
+        <div class="header">
+            <div class="left">Bypass Launcher</div>
+            <div class="right" id="datetime"></div>
+        </div>
+			<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="ab.html">About</a>
+  <a href="TOS.html">Terms of service</a>
+  <a href="../webos-main/index.html">Return to the lock screen</a>
+</div>
+
+<div id="main">
+  <button class="openbtn" onclick="openNav()">&#9776; </button>
+</div>
+    </div>
+    <div class="container">
+                    <h1>About</h1>
+                    <div>
+                        <p><b>Version:</b>
+<br><br>
+You are using Alpha 3.1 of the bypass launcher
+<br><br>
+<b>Credits:</b>
+<br><br>
+Some links and resources are brought to you by: https://github.com/CodeTestGroup. Check out their website at https://codetestgroup.github.io.
+<br><br>
+Source codes, css, and cool web pages and features are also brought by: https://www.w3schools.com/
+<br><br>
+<b>Product info:</b>
+<br><br>
+Bypass launcher Ultimate trial public release 1.0 full version
+<br><br>
+<b>About:</b>
+<br><br>
+Copyright ©HTMLtesterofficial entertainment services, all rights reserved
+</p><br>
+<br><br>
+                    </div>
+                  </div>
+                  <small>This page was made with <a href="https://codetestgroup.github.io/WebsiteMaker">codetestgroup.github.io/WebsiteMaker</a>!
+                </body>
+                </html>
+            
