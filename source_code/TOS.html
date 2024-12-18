@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service</title>
+    <style>
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        h1 {
+            color: #000000;
+        }
+
+        p {
+            color: #000000;
+        }
+#white {
+    color: white;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.containertime {
+    height: 10%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(128, 128, 128);
+    padding: 5px 20px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.left {
+
+}
+
+.right {
+
+}
+
+.footer {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 30px 20px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    width: 70%;
+    border-radius: 10px;
+}
+
+.clock {
+    font-family: 'Roboto', sans-serif;
+    font-size: 4rem; 
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+}
+
+.date {
+    font-family: 'Roboto', sans-serif; 
+    font-size: 1.2rem;
+    text-align: center;
+    color: white;
+    margin-top: 10px;
+}
+
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.container img {
+    width: 100%;
+    height: auto;
+}
+
+.container .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.container .btn:hover {
+    background-color: black;
+}
+
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+}
+
+img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+#center {
+    text-align: center;
+}
+.sidebar {
+  height: 100%;
+  width: 0; 
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+    </style>
+    <script> 
+    // Function to extract the random number from the URL
+    const getRandomNumberFromUrl = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('num');
+    };
+
+    // Function to display the random number on the page and log it to the console
+    const displayRandomNumber = () => {
+      const randomNumber = getRandomNumberFromUrl();
+
+      if (randomNumber !== null) {
+       // const displayElement = document.createElement('p');
+       // displayElement.textContent = `UID: ${randomNumber}`;
+       // document.body.appendChild(displayElement);
+
+        // Log the random number to the console
+        console.log('devtools_UID:', randomNumber);
+      } else {
+        //const errorMessage = document.createElement('p');
+       // errorMessage.textContent = 'No random number specified in the URL.';
+       //document.body.appendChild(errorMessage);
+        window.location.href = '../website/tosprotect.html';
+      }
+    };
+
+    // Call the displayRandomNumber function when the page loads
+    window.onload = displayRandomNumber;</script>
+	<script>
+function updateDateTime() {
+    const now = new Date();
+
+    // Update clock in the header
+    const hoursHeader = now.getHours() % 12 || 12; // Convert to 12-hour format
+    const minutesHeader = now.getMinutes();
+    const ampmHeader = now.getHours() >= 12 ? 'PM' : 'AM';
+    const timeStringHeader = `${hoursHeader}:${minutesHeader < 10 ? '0' : ''}${minutesHeader} ${ampmHeader}`;
+    document.getElementById('datetime').textContent = timeStringHeader;
+
+    // Update clock in the main area
+    const hoursMain = now.getHours() % 12 || 12; // Convert to 12-hour format
+    const minutesMain = now.getMinutes();
+    const ampmMain = now.getHours() >= 12 ? '' : '';
+    const timeStringMain = `${hoursMain}:${minutesMain < 10 ? '0' : ''}${minutesMain} ${ampmMain}`;
+    document.getElementById('clock').textContent = timeStringMain;
+
+    // Update date
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const dayOfWeek = daysOfWeek[now.getDay()];
+    const dayOfMonth = now.getDate();
+    const month = months[now.getMonth()];
+    const year = now.getFullYear();
+    const dateString = `${dayOfWeek}, ${dayOfMonth}${getDaySuffix(dayOfMonth)} ${month} ${year}`;
+    document.getElementById('date').textContent = dateString;
+}
+
+// Function to get the suffix for the day of the month (e.g., 1st, 2nd, 3rd, etc.)
+function getDaySuffix(day) {
+    if (day >= 11 && day <= 13) {
+        return 'th';
+    }
+    switch (day % 10) {
+        case 1: return 'st';
+        case 2: return 'nd';
+        case 3: return 'rd';
+        default: return 'th';
+    }
+}
+
+// Update date and time every second
+setInterval(updateDateTime, 1000);
+
+// Initial call to display date and time immediately
+updateDateTime();
+//navigation assistant javascript code
+function navassistance() {
+  var x = document.getElementById("myNavbar");
+  if (x.className === "navbar") {
+    x.className += " responsive";
+  } else {
+    x.className = "navbar";
+  }
+}
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}
+	</script>
+</head>
+<body>
+    <div class="containertime">
+        <div class="header">
+            <div class="left">Bypass Launcher</div>
+            <div class="right" id="datetime"></div>
+        </div>
+			<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="../website/index.html?num=12345">Home</a>
+  <a href="ab.html?num=1234">About</a>
+  <a href="TOS.html?num=1234">Terms of service</a>
+  <a href="../webos-main/index.html">Lock Session</a>
+</div>
+
+<div id="main">
+  <button class="openbtn" onclick="openNav()">&#9776; </button>
+</div>
+    </div>
+    <!-- Content of TOS -->
+    <div class="container">
+        <h1>Terms of Service</h1>
+        <div>
+            <p>By using this copy, you agree to the following:</p>
+
+            <p><strong>1. Disclaimer of Warranties</strong><br><br>
+            Our products and features are provided "as is" without any representations or warranties, express or implied. We do not guarantee that your use of our products will be free from consequences. You are solely responsible for any inappropriate use of this website. By accepting these terms, you acknowledge and accept responsibility for your actions and agree not to hold us (@htmltesterofficial GitHub team) liable.</p>
+
+            <p><strong>2. Updates to Terms</strong><br><br>
+            We reserve the right to modify or update these Terms of Service at any time. By continuing to use our website after any changes are made, you agree to be bound by the revised terms. It is your responsibility to review this page periodically for updates.</p>
+
+            <p><strong>3. User Conduct</strong><br><br>
+            You agree to use our website and products in a manner that is lawful and respectful. Any misuse, including but not limited to hacking, spamming, or violating any applicable laws, will result in immediate termination of your access to our services.</p>
+
+            <p><strong>4. Redistribution of Copies</strong><br><br>
+            We reserve all rights to the copies and tools officially created by HTMLtester. By continuing to use our products, you agree not to engage in piracy or illegal redistribution of these copies. You acknowledge that you will not redistribute our products without official documentation permitting such actions. Furthermore, you accept full responsibility for any piracy or illegal redistribution of our products and agree to pay any fees imposed by HTMLtester, as well as take necessary actions to remove these illegal copies from circulation.</p>
+
+            <p><strong>5. Limitation of Liability</strong><br><br>
+            In no event shall HTMLtester or its affiliates be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of our products or services.</p>
+
+            <p><strong>6. Waiver of Legal Action</strong><br><br>
+            By agreeing to these terms of service, you waive your right to initiate any legal action against HTMLtester or any of its products.</p>
+
+            <p><strong>7. Accountability and Contact</strong><br><br>
+            If you have any questions or concerns about these terms of service, please contact us at BypassHTML@outlook.com. By using our product, you agree to be accountable for your actions and understand that it is your responsibility to seek clarification or resolution by contacting us.</p>
+        </div>
+    </div>
+    <small>This page was made with <a href="https://codetestgroup.github.io/WebsiteMaker">codetestgroup.github.io/WebsiteMaker</a>!</small>
+</body>
+</html>
